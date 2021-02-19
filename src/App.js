@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
+import Calculator from './Calculator.js';
 import './App.css';
 
 
 function App() {
-  const [result, setResult] = useState(0);
   const [firstNum, setFirstNum] = useState(0);
-  const [secNum, setSecNum] = useState(0);
-  const [operator, setOperator] = useState('+');
+  const [secNum, setSecNum] = useState("");
+  const [operator, setOperator] = useState('');
 
   const useOperator = {
     '+': function(x, y) {return x + y},
@@ -15,44 +15,64 @@ function App() {
     '/': function(x, y) {return x / y}
   }
 
-  const handleFirstNumChange = (event) => {
-    setFirstNum(event.target.value)
+  const handleAC = () => {
+    setFirstNum(0);
+    setSecNum("");
+    setOperator('');
   }
 
-  const handleSecNumChange = (event) => {
-    setSecNum(event.target.value)
+  const handleDelete = () => {
+    if(secNum.length === 0 && operator !== '') {
+      setOperator('')
+    } else if(firstNum.length > 1 && secNum ==="") {
+      setFirstNum(firstNum.slice(0, -1));
+    } else if(firstNum.length === 1) {
+      setFirstNum(0)
+    } else {
+      setSecNum(secNum.slice(0, -1));
+    }
   }
 
-  const handleOpChange = (event) => {
+  const handleCurrent = (event) => {
+    if (operator === '') {
+      if (firstNum !== 0) {
+        setFirstNum(firstNum + event.target.value)
+      } else {
+        setFirstNum(event.target.value)
+      }
+    }
+    else {
+      setSecNum(secNum + event.target.value)
+    }
+  }
+
+  const handleOperator = (event) => {
     setOperator(event.target.value)
   }
 
-  const handleCalc = () => {
-    let x = parseInt(firstNum);
-    let y = parseInt(secNum);
-    setResult(useOperator[operator](x,y));
+  const handleEquals = (event) => {
+    if(operator !== "") {
+      let x = parseInt(firstNum);
+      let y = parseInt(secNum);
+      setFirstNum(useOperator[operator](x,y));
+      setSecNum("");
+      setOperator("");
+    }
   }
 
   return (
     <div className="App">
-      <h1>Simple Calculator App</h1>
-      <br/>
-      <h1>{result}</h1>
-      <br/>
-      <span>
-        <input type='number' name='firstNumber' onChange={handleFirstNumChange} value={firstNum}></input>
-        <select name='operation' onChange={handleOpChange}>
-          <option value='+'>+</option>
-          <option value='-'>-</option>
-          <option value='*'>*</option>
-          <option value='/'>/</option>
-        </select>
-        <input type='number' name='secondNumber' onChange={handleSecNumChange} value={secNum}></input>
-      </span>
-      <button
-        onClick={handleCalc}
-      >Calculate
-      </button>
+      <h1 align='center'>Simple Calculator App</h1>
+      <Calculator
+        firstNum={firstNum}
+        secNum={secNum}
+        operator={operator}
+        handleDelete={handleDelete}
+        handleOperator={handleOperator}
+        handleCurrent={handleCurrent}
+        handleAC={handleAC}
+        handleEquals={handleEquals}
+      />
     </div>
   );
 }
