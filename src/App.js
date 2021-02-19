@@ -8,6 +8,13 @@ function App() {
   const [secNum, setSecNum] = useState(0);
   const [operator, setOperator] = useState('+');
 
+  const useOperator = {
+    '+': function(x, y) {return x + y},
+    '-': function(x, y) {return x - y},
+    '*': function(x, y) {return x * y},
+    '/': function(x, y) {return x / y}
+  }
+
   const handleFirstNumChange = (event) => {
     setFirstNum(event.target.value)
   }
@@ -21,7 +28,9 @@ function App() {
   }
 
   const handleCalc = () => {
-    setResult(eval(firstNum + operator + secNum));
+    let x = parseInt(firstNum);
+    let y = parseInt(secNum);
+    setResult(useOperator[operator](x,y));
   }
 
   return (
