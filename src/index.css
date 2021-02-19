@@ -19,7 +19,6 @@ body {
 .calculator {
   display: grid;
   justify-content: center;
-  /* align-items: center; */
   grid-template-columns: repeat(4, 100px);
   min-height: 75vh;
   gap: 0;
@@ -72,4 +71,24 @@ body {
 
 .right-bottom {
   border-bottom-right-radius: 10px;
+}
+
+/* Mobile Responsiveness */
+
+@media only screen and (max-width: 600px) {
+  .calculator {
+    justify-content: center;
+    grid-template-columns: repeat(4, 80px);
+    min-height: 70vh;
+    gap: 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .calculator {
+    justify-content: center;
+    grid-template-columns: repeat(4, 70px);
+    min-height: 70vh;
+    gap: 0;
+  }
 }
