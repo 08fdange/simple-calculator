@@ -22,9 +22,9 @@ const Calculator = (props) => {
             <button value='8' onClick={handleCurrent}>8</button>
             <button value='9' onClick={handleCurrent}>9</button>
             <button value='-' onClick={handleOperator}>-</button>
-            <button value='' onClick={handleCurrent}>.</button>
+            <button className='left-bottom' value='' onClick={handleCurrent}>.</button>
             <button value='0' onClick={handleCurrent}>0</button>
-            <button className='span-two' onClick={handleEquals}>=</button>     
+            <button className='span-two right-bottom' onClick={handleEquals}>=</button>     
         </div>
     )
 }

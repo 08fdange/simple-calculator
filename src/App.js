@@ -62,7 +62,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 align='center'>Simple Calculator App</h1>
+      <h1 className='header' align='center'>Simple Calculator App</h1>
       <Calculator
         firstNum={firstNum}
         secNum={secNum}

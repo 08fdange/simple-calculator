@@ -6,6 +6,10 @@
   font-family: 'Roboto';
 }
 
+.header {
+  font-size: 39px;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -15,8 +19,10 @@ body {
 .calculator {
   display: grid;
   justify-content: center;
-  align-items: center;
-  grid-template-columns: repeat(4, 80px);
+  /* align-items: center; */
+  grid-template-columns: repeat(4, 100px);
+  min-height: 75vh;
+  gap: 0;
 }
 
 .calculator > button {
@@ -36,6 +42,8 @@ body {
 }
 
 .output {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   grid-column: 1 / -1;
   background-color: rgba(0, 0, 0, .75);
   display: flex;
@@ -56,4 +64,12 @@ body {
 .output .current-operand {
   color: white;
   font-size: 2.5rem;
+}
+
+.left-bottom {
+  border-bottom-left-radius: 10px;
+}
+
+.right-bottom {
+  border-bottom-right-radius: 10px;
 }
