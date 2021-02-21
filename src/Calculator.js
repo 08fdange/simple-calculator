@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Calculator = (props) => {
-    const {firstNum,secNum,operator,handleAC,handleOperator,handleCurrent,handleEquals,handleDelete} = props;
+    const {firstNum,secNum,operator,handleAC,handleOperator, handleDecimal,handleCurrent,handleEquals,handleDelete} = props;
     return(
         <div className='calculator'>
             <div className='output'>
@@ -22,7 +22,7 @@ const Calculator = (props) => {
             <button value='8' onClick={handleCurrent}>8</button>
             <button value='9' onClick={handleCurrent}>9</button>
             <button value='-' onClick={handleOperator}>-</button>
-            <button className='left-bottom' value='' onClick={handleCurrent}>.</button>
+            <button className='left-bottom' value='.' onClick={handleDecimal}>.</button>
             <button value='0' onClick={handleCurrent}>0</button>
             <button className='span-two right-bottom' onClick={handleEquals}>=</button>     
         </div>
