@@ -17,14 +17,14 @@ function App() {
 
   const handleAC = () => {
     setFirstNum(0);
-    setSecNum("");
+    setSecNum('');
     setOperator('');
   }
 
   const handleDelete = () => {
     if(secNum.length === 0 && operator !== '') {
       setOperator('')
-    } else if(firstNum.length > 1 && secNum ==="") {
+    } else if(firstNum.length > 1 && secNum ==='') {
       setFirstNum(firstNum.slice(0, -1));
     } else if(firstNum.length === 1) {
       setFirstNum(0)
@@ -51,20 +51,20 @@ function App() {
   }
 
   const handleDecimal = (event) => {
-    if (operator === '' && !firstNum.includes(".")) {
+    if (operator === '' && !firstNum.includes('.')) {
       setFirstNum(firstNum + ".")
-    } else if (!secNum.includes(".") && operator !== "") {
-      setSecNum(secNum + ".")
+    } else if (!secNum.includes('.') && operator !== '') {
+      setSecNum(secNum + '.')
     }
   }
 
   const handleEquals = (event) => {
-    if(operator !== "") {
+    if(operator !== '' && secNum !== '') {
       let x = parseFloat(firstNum);
       let y = parseFloat(secNum);
       setFirstNum(useOperator[operator](x,y));
-      setSecNum("");
-      setOperator("");
+      setSecNum('');
+      setOperator('');
     }
   }
 

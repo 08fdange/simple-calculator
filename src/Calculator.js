@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Calculator = (props) => {
+    
     const {firstNum,secNum,operator,handleAC,handleOperator, handleDecimal,handleCurrent,handleEquals,handleDelete} = props;
+
     return(
         <div className='calculator'>
             <div className='output'>
