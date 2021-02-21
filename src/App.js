@@ -49,11 +49,19 @@ function App() {
   const handleOperator = (event) => {
     setOperator(event.target.value)
   }
+  
+  const handleDecimal = (event) => {
+    if (operator === '' && !firstNum.includes(".")) {
+      setFirstNum(firstNum + ".")
+    } else if (!secNum.includes(".") && operator !== "") {
+      setSecNum(secNum + ".")
+    }
+  }
 
   const handleEquals = (event) => {
     if(operator !== "") {
-      let x = parseInt(firstNum);
-      let y = parseInt(secNum);
+      let x = parseFloat(firstNum);
+      let y = parseFloat(secNum);
       setFirstNum(useOperator[operator](x,y));
       setSecNum("");
       setOperator("");
@@ -69,6 +77,7 @@ function App() {
         operator={operator}
         handleDelete={handleDelete}
         handleOperator={handleOperator}
+        handleDecimal={handleDecimal}
         handleCurrent={handleCurrent}
         handleAC={handleAC}
         handleEquals={handleEquals}
